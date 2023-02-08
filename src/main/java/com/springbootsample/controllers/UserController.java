@@ -37,10 +37,15 @@ public class UserController {
     }
 
     @GetMapping("/delete")
-    public ResponseEntity<String> delete(@RequestParam String id) {
-        User toBeDeletedUser = userRepository.fin
-        userRepository.deleteById(id);
-        return new ResponseEntity<>(,HttpStatus.OK);
+    public ResponseEntity<String> delete(@RequestParam long id) {
+        try {
+            userRepository.deleteById(id);
+            return new ResponseEntity<>("Deleted"+id,HttpStatus.OK);
+        }
+        catch (Exception ex)
+        {
+            return new ResponseEntity<>("Error",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
     
  }
