@@ -9,4 +9,5 @@ import com.springbootsample.model.User;
 public interface UserRepository extends JpaRepository<User,Long>{
     List<User> findByPublished(boolean published);
     List<User> findByTitleContaining(String title);
+    List<User> deleteById(String id);
 }
